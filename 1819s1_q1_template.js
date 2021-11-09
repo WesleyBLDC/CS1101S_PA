@@ -55,6 +55,17 @@ function assert(test_name, test_func, truth, dependence) {
 function make_big_int_from_number(num) {
 
     // WRITE HERE.
+    if(num === 0){
+        return list(num);
+    } else {
+        const ans = num % 10;
+        const next = math_floor(num / 10);
+        
+        return next === 0 
+                ? pair(ans, null)
+                : pair(ans, make_big_int_from_number(next));
+        
+    }
 
 }
 
@@ -78,6 +89,7 @@ assert("1A_5", () => make_big_int_from_number(9876543210),
 function big_int_to_string(bint) {
 
     // WRITE HERE.
+    return accumulate((elem,x)=> stringify(elem) + x,"",reverse(bint));
 
 }
 
@@ -111,7 +123,20 @@ function big_int_add(bintX, bintY) {
         } else {
 
             // WRITE HERE.
-
+            if (is_null(x){
+                return add(y,list(0),carry);
+            } else if(is_null(y)){
+                return add(x,list(0),carry);
+            }else{
+            
+            const ans = head(x) + head(y) +carry;
+            const rem = ans % 10;
+            
+            return ans > 10 
+                ? pair(rem, add(tail(x),tail(y),1))
+                : pair(rem, add(tail(x),tail(y),0));
+            }
+            
         }
     }
     return add(bintX, bintY, 0);
