@@ -131,6 +131,10 @@ function digits_to_string(digits) {
 function build_largest_int(digits) {
 
     // WRITE HERE.
+    const S = copy_array(digits);
+    sort_ascending(S);
+    reverse_array(S);
+    return digits_to_string(S);
 
 }
 
@@ -156,6 +160,22 @@ assert("2A_6", () => build_largest_int([5,5,5,5,5,5,5,5,5,5]),
 function build_2nd_largest_int(digits) {
 
     // WRITE HERE.
+    const S = copy_array(digits);
+    sort_ascending(S);
+    reverse_array(S);
+    
+    const len = array_length(S);
+    
+    for (let i= len - 1; i > 0 ; i = i -1){
+        if(S[i] !== S[i-1]){
+            swap(S,i,i-1);
+            break;
+            
+        }
+    }
+    
+    return digits_to_string(S);
+    
 
 }
 
