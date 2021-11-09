@@ -165,28 +165,13 @@ assert("1C_6", () => big_int_add(
 //===============================================================
 function big_int_mult_by_digit(bint, digit) {
 
-    function add(x, y, carry) {
-        if (is_null(x) && is_null(y)) {
-            return (carry === 0) ? null : pair(carry, null);
-        } else {
-
-            if (is_null(x)){
-                return add(list(0),y,carry);
-            } else if(is_null(y)){
-                return add(x,list(0),carry);
-            }else{
-            
-            const ans = head(x) + head(y) + carry;
-            const rem = ans % 10;
-            
-            return ans >= 10 
-                ? pair(rem, add(tail(x),tail(y),1))
-                : pair(rem, add(tail(x),tail(y),0));
-            }
-            
-        }
+    if(digit===0){
+        return list(0);
+    }else if(head(bint)===0){
+        return list(0);
+    }else{
+        return big_int_add(big_int_mult_by_digit(bint, digit - 1),bint);
     }
-    return add(bintX, bintY, 0);
 
 }
 
