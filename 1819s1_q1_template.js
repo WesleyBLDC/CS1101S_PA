@@ -225,8 +225,25 @@ assert("1E_4", () => big_int_mult_by_10_pow_n(list(5,8,3,1), 20),
 //===============================================================
 function big_int_mult(bintX, bintY) {
 
+    // const newY = reverse(bintY);
+    
     // WRITE HERE.
-
+    // if(is_null(bintY) ){
+    //     return list(0);
+    // } else{
+    //     const len = length(bintY);
+    //     return big_int_add(
+    //     big_int_mult_by_10_pow_n(
+    //         big_int_mult_by_digit(bintX,head(bintY)),len-1),
+    //         big_int_mult(bintX,tail(bintY)));
+    // }
+    if(is_null(bintY)){
+        return list(0);
+    }
+    else{
+    return big_int_add(big_int_mult_by_digit(bintX, head(bintY)),
+                big_int_mult_by_10_pow_n(big_int_mult(bintX, tail(bintY)), 1));
+}
 }
 
 
