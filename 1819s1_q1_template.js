@@ -165,13 +165,11 @@ assert("1C_6", () => big_int_add(
 //===============================================================
 function big_int_mult_by_digit(bint, digit) {
 
-    // WRITE HERE.
     function add(x, y, carry) {
         if (is_null(x) && is_null(y)) {
             return (carry === 0) ? null : pair(carry, null);
         } else {
 
-            // WRITE HERE.
             if (is_null(x)){
                 return add(list(0),y,carry);
             } else if(is_null(y)){
