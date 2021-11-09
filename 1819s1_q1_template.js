@@ -194,7 +194,13 @@ assert("1D_4", () => big_int_mult_by_digit(
 //===============================================================
 function big_int_mult_by_10_pow_n(bint, n) {
 
-    // WRITE HERE.
+    if(n===0){
+        return bint;
+    }else if(head(bint)===0 && is_null(tail(bint))){
+        return list(0);
+    }else{
+        return big_int_mult_by_10_pow_n(pair(0,bint),n-1);
+    }
 
 }
 
